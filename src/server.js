@@ -30,7 +30,10 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   // got to db, fetch data
   const points = ['Html', 'Css', 'Js'];
-
+  const isLoggedIn = true;
+  if (!isLoggedIn) {
+    return res.status(403).send('Forbiden, please log in');
+  }
   // pass data
   res.render('about', { points: points, title: 'About Us All' });
 });
