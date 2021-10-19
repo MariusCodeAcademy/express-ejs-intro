@@ -12,6 +12,7 @@ const app = express();
 
 // set engine, defaul directory /views
 app.set('view engine', 'ejs');
+app.set('views', 'src/views');
 
 // middleware
 app.use(morgan('common'));
@@ -32,7 +33,7 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   // res.send('<h1>Welcome to Ejs</h1>');
   // send file as a response
-  res.sendFile(path.join(__dirname, 'views', 'about.html'));
+  res.render('about');
 });
 
 const sampleRoutes = require('./routes/v1/sampleRoute');
