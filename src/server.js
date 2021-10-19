@@ -25,15 +25,14 @@ const staticPath = path.join(__dirname, 'assets');
 app.use(express.static(staticPath));
 
 app.get('/', (req, res) => {
-  // res.send('<h1>Welcome to Ejs</h1>');
-  // send file as a response
-  // res.sendFile(path.join(__dirname, 'views', 'index.html'));
-  res.render('index');
+  res.render('index', { title: 'Home page' });
 });
 app.get('/about', (req, res) => {
-  // res.send('<h1>Welcome to Ejs</h1>');
-  // send file as a response
-  res.render('about');
+  // got to db, fetch data
+  const points = ['Html', 'Css', 'Js'];
+
+  // pass data
+  res.render('about', { points: points, title: 'About Us All' });
 });
 
 const sampleRoutes = require('./routes/v1/sampleRoute');

@@ -5,18 +5,33 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EjsSSR | About us</title>
+  <title>EjsSSR | <%= title %>
+  </title>
   <link rel="stylesheet" href="/css/style.css">
   <script src="/js/front.js" defer></script>
 </head>
 
-<body>
-  <main class="container">
-    <h1>Welcome About Ejs</h1>
-    <p>All started years ago</p>
-  </main>
+<%# const points=['Html', 'Css' , 'Js' ] %>
+
+  <body>
+    <main class="container">
+      <h1>Welcome About Ejs</h1>
+      <p>All started years ago</p>
+
+      <h3>Best points</h3>
+      <ul>
+        <% points && points.forEach(el=> { %>
+          <li>
+            <h5 class="someClass">
+              <%= el %>
+            </h5>
+          </li>
+
+          <% }) %>
+      </ul>
+    </main>
 
 
-</body>
+  </body>
 
 </html>
