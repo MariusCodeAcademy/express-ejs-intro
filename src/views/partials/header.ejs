@@ -1,7 +1,7 @@
 <header>
   <nav class="container">
-    <a class="nav-link" href="/">Home</a>
-    <a class="nav-link" href="/about">About</a>
+    <a class="nav-link <%= locals.currentPage && currentPage === 'home' ? 'active' : ''  %> " href="/">Home</a>
+    <a class="nav-link <%= locals.currentPage && currentPage === 'about' ? 'active' : ''  %>  " href="/about">About</a>
     <a class="nav-link" href="/contact">Contact us</a>
     <a class="nav-link" href="/layout">Layout</a>
   </nav>

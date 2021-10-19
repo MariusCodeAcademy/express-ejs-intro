@@ -25,7 +25,7 @@ const staticPath = path.join(__dirname, 'assets');
 app.use(express.static(staticPath));
 
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Home page' });
+  res.render('index', { title: 'Home page', currentPage: 'home' });
 });
 app.get('/about', (req, res) => {
   // got to db, fetch data
@@ -35,7 +35,11 @@ app.get('/about', (req, res) => {
     return res.status(403).send('Forbiden, please log in');
   }
   // pass data
-  res.render('about', { points: points, title: 'About Us All' });
+  res.render('about', {
+    points: points,
+    title: 'About Us All',
+    currentPage: 'about',
+  });
 });
 
 const users = require('./db/users');

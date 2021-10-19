@@ -29,4 +29,9 @@
 
 3. create posts page. Connect to mysql db and display post with an include of post.ejs component
 
-4.
+4. in server.js file create global constant CurrentUser with email and username
+   pass this user object to posts page. in header show user email if it exists
+
+5. Create users page. Generate users from mysql db users table, show only emails in the list
+
+6. contact page. If i click on a card i am taken to single-contact page. single-contact page dynamically show data of a card that was pressed. One page to show any single card data

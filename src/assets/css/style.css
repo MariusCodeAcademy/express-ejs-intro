@@ -26,6 +26,23 @@ body {
   box-shadow: 5px 5px 10px gray;
 }
 
+nav {
+  background-color: #333;
+  color: snow;
+}
+.nav-link {
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  color: white;
+  display: inline-block;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .cart_title {
   margin: 1rem;
 }
