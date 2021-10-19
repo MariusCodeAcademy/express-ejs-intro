@@ -18,3 +18,5 @@ const users = [
     gender: 'female',
   },
 ];
+
+module.exports = users;

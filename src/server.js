@@ -38,8 +38,10 @@ app.get('/about', (req, res) => {
   res.render('about', { points: points, title: 'About Us All' });
 });
 
+const users = require('./db/users');
+console.log('users', users);
 app.get('/contact', (req, res) => {
-  res.render('contact', { title: 'Contact us today' });
+  res.render('contact', { title: 'Contact us today', users });
 });
 
 app.get('/layout', (req, res) => {
