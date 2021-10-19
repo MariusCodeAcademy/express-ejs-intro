@@ -38,6 +38,14 @@ app.get('/about', (req, res) => {
   res.render('about', { points: points, title: 'About Us All' });
 });
 
+app.get('/contact', (req, res) => {
+  res.render('contact', { title: 'Contact us today' });
+});
+
+app.get('/layout', (req, res) => {
+  res.render('mainLayout', { title: 'layout', asideOn: true });
+});
+
 const sampleRoutes = require('./routes/v1/sampleRoute');
 
 app.use('/sample', sampleRoutes);

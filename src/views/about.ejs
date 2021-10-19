@@ -1,43 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EjsSSR | <%= title %>
-  </title>
-  <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/front.js" defer></script>
-</head>
-
-<%# const points=['Html', 'Css' , 'Js' ] %>
-
-  <body>
-
-    <!-- include header -->
-    <%- include('partials/header') %>
-
-      <main class="container">
+<%- include('partials/head') %>
 
 
-        <h1>Welcome About Ejs</h1>
-        <p>All started years ago</p>
+  <!-- include header -->
+  <%- include('partials/header') %>
 
-        <h3>Best points</h3>
-        <ul>
-          <% points && points.forEach(el=> { %>
-            <li>
-              <h5 class="someClass">
-                <%= el %>
-              </h5>
-            </li>
-
-            <% }) %>
-        </ul>
-      </main>
+    <main class="container">
 
 
-  </body>
+      <h1>Welcome About Ejs</h1>
+      <p>All started years ago</p>
 
-</html>
+      <h3>Best points</h3>
+      <ul>
+        <% points && points.forEach(el=> { %>
+          <li>
+            <h5 class="someClass">
+              <%= el %>
+            </h5>
+          </li>
+
+          <% }) %>
+      </ul>
+    </main>
+
+    <%- include('partials/footer') %>
