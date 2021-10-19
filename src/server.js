@@ -25,9 +25,18 @@ app.get('/', (req, res) => {
   // send file as a response
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
+app.get('/about', (req, res) => {
+  // res.send('<h1>Welcome to Ejs</h1>');
+  // send file as a response
+  res.sendFile(path.join(__dirname, 'views', 'about.html'));
+});
 
 const sampleRoutes = require('./routes/v1/sampleRoute');
 
 app.use('/sample', sampleRoutes);
+
+app.all('*', (req, res) => {
+  res.status(404).send('OOPS page not found');
+});
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
