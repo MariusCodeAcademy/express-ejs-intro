@@ -10,6 +10,9 @@ const PORT = process.env.SERVER_PORT || 3000;
 
 const app = express();
 
+// set engine, defaul directory /views
+app.set('view engine', 'ejs');
+
 // middleware
 app.use(morgan('common'));
 app.use(cors());
@@ -23,7 +26,8 @@ app.use(express.static(staticPath));
 app.get('/', (req, res) => {
   // res.send('<h1>Welcome to Ejs</h1>');
   // send file as a response
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
+  // res.sendFile(path.join(__dirname, 'views', 'index.html'));
+  res.render('index');
 });
 app.get('/about', (req, res) => {
   // res.send('<h1>Welcome to Ejs</h1>');
@@ -35,6 +39,7 @@ const sampleRoutes = require('./routes/v1/sampleRoute');
 
 app.use('/sample', sampleRoutes);
 
+// 404 not found url
 app.all('*', (req, res) => {
   res.status(404).send('OOPS page not found');
 });
