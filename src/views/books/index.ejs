@@ -1,11 +1,24 @@
 <%- include('../partials/head') %>
-
+  <!-- we get data {title: Books page, books: [all books array]} -->
 
   <!-- include header -->
   <%- include('../partials/header') %>
 
     <main class="container">
       <h1>Welcome to our books page</h1>
+      <hr>
+
+      <h3>Our current books </h3>
+      <!-- loop to get all books titles -->
+      <ol class="books-list">
+        <li>
+          <%= books[0].title %> -
+            <%= books[0].author %>
+        </li>
+        <li>
+          <%= books[1].title %>
+        </li>
+      </ol>
     </main>
 
     <%- include('../partials/footer') %>
