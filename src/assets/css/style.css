@@ -51,3 +51,27 @@ nav {
 footer {
   text-align: center;
 }
+
+.feedback {
+  position: fixed;
+  min-width: 50%;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid #000;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 3px 3px 10px gray;
+}
+
+.feedback.error {
+  border-color: tomato;
+  background-color: rgb(254, 209, 201);
+  box-shadow: 3px 3px 10px rgb(254, 209, 201);
+}
+.feedback.success {
+  border-color: green;
+  background-color: rgb(202, 228, 202);
+  box-shadow: 3px 3px 10px rgb(96, 133, 96);
+}
