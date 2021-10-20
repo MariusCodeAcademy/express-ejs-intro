@@ -44,7 +44,23 @@ router.get('/new', async (req, res) => {
 
 // POST /books/new - process the form
 router.post('/new', async (req, res) => {
-  res.send({ msg: 'procesing form', formInputs: req.body });
+  // create new book
+  const sql = `
+  INSERT INTO books (title, author, year, category, image) 
+  VALUES (?, ?, ?, ?, 'place.jpg')`;
+  const dbResult = await dbAction(sql, Object.values(req.body));
+  if (dbResult === false) {
+    return dbFail();
+  }
+  res.send({ msg: 'book created', dbResult });
+
+  const data = {
+    title: 'Create book',
+    currentPage: 'booksNew',
+    categories: categories,
+    msg: 'book created',
+  };
+  res.render('books/new', data);
 });
 
 module.exports = router;
