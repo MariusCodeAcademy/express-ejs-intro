@@ -15,6 +15,8 @@ app.set('views', 'src/views');
 app.use(morgan('common'));
 app.use(cors());
 app.use(express.json());
+// gets req.body data form sent not in json
+app.use(express.urlencoded({ extended: false }));
 
 // static directory for css, img, js front files
 const staticPath = path.join(__dirname, 'assets');

@@ -29,14 +29,22 @@ router.get('/', async (req, res) => {
 
 // GET /books/new - show form to add new book
 router.get('/new', async (req, res) => {
+  // get categories for select
+  const sql = 'SELECT * from book_categories';
+  const categories = await dbAction(sql);
+  console.log('categories', categories);
   const data = {
     title: 'Create book',
     currentPage: 'booksNew',
+    categories: categories,
   };
 
   res.render('books/new', data);
 });
 
 // POST /books/new - process the form
+router.post('/new', async (req, res) => {
+  res.send({ msg: 'procesing form', formInputs: req.body });
+});
 
 module.exports = router;
