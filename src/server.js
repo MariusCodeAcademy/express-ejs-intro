@@ -52,7 +52,7 @@ app.get('/layout', (req, res) => {
 
 const booksRoutes = require('./routes/v1/booksRoutes');
 
-app.use('/sample', booksRoutes);
+app.use('/books', booksRoutes);
 
 // 404 not found url
 app.all('*', (req, res) => {
