@@ -44,21 +44,23 @@ router.get('/new', async (req, res) => {
 
 // POST /books/new - process the form
 router.post('/new', async (req, res) => {
+  let feedback = { msg: '', kind: '' };
   // create new book
   const sql = `
   INSERT INTO books (title, author, year, category, image) 
   VALUES (?, ?, ?, ?, 'place.jpg')`;
   const dbResult = await dbAction(sql, Object.values(req.body));
   if (dbResult === false) {
-    return dbFail();
+    feedback = { msg: 'something went wrong', kind: 'error' };
+  } else {
+    feedback = { msg: 'book created', kind: 'success' };
   }
-  res.send({ msg: 'book created', dbResult });
+  // resrs.send({ msg: 'book created', dbResult });
 
   const data = {
     title: 'Create book',
     currentPage: 'booksNew',
-    categories: categories,
-    msg: 'book created',
+    feedback: feedback,
   };
   res.render('books/new', data);
 });
