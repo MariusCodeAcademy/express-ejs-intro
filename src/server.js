@@ -3,9 +3,6 @@ const morgan = require('morgan');
 const cors = require('cors');
 const path = require('path'); // node module
 
-// const mysql = require('mysql2/promise');
-// const dbConfig = require('./dbConfig');
-
 const PORT = process.env.SERVER_PORT || 3000;
 
 const app = express();
@@ -27,6 +24,7 @@ app.use(express.static(staticPath));
 app.get('/', (req, res) => {
   res.render('index', { title: 'Home page', currentPage: 'home' });
 });
+
 app.get('/about', (req, res) => {
   // got to db, fetch data
   const points = ['Html', 'Css', 'Js'];
@@ -43,7 +41,7 @@ app.get('/about', (req, res) => {
 });
 
 const users = require('./db/users');
-console.log('users', users);
+// console.log('users', users);
 app.get('/contact', (req, res) => {
   res.render('contact', { title: 'Contact us today', users });
 });
@@ -52,9 +50,9 @@ app.get('/layout', (req, res) => {
   res.render('mainLayout', { title: 'layout', asideOn: true });
 });
 
-const sampleRoutes = require('./routes/v1/sampleRoute');
+const booksRoutes = require('./routes/v1/booksRoutes');
 
-app.use('/sample', sampleRoutes);
+app.use('/sample', booksRoutes);
 
 // 404 not found url
 app.all('*', (req, res) => {
