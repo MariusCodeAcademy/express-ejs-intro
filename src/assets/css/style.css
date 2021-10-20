@@ -39,8 +39,9 @@ nav {
 }
 
 .nav-link.active {
-  font-weight: bold;
+  /* font-weight: bold; */
   text-decoration: underline;
+  color: rgb(222, 222, 222);
 }
 
 .cart_title {

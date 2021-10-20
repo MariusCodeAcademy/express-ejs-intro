@@ -21,9 +21,22 @@ router.get('/', async (req, res) => {
   // 2. send response page with data
   const data = {
     title: 'Our books',
+    currentPage: 'books',
     books,
   };
   res.render('books/index', data);
 });
+
+// GET /books/new - show form to add new book
+router.get('/new', async (req, res) => {
+  const data = {
+    title: 'Create book',
+    currentPage: 'booksNew',
+  };
+
+  res.render('books/new', data);
+});
+
+// POST /books/new - process the form
 
 module.exports = router;
