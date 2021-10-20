@@ -35,3 +35,12 @@
 5. Create users page. Generate users from mysql db users table, show only emails in the list
 
 6. contact page. If i click on a card i am taken to single-contact page. single-contact page dynamically show data of a card that was pressed. One page to show any single card data
+
+## uzduotiys ejs toliau
+
+1. sukurti forma irasyti naujai knygai su ivesties laukais
+2. forma siusti su front end fetch
+3. forma siusti be front end fetch (action=books/new method=post)
+4. padaryti front end validaija ivesties laukui title, be refresh (min 3 raides)
+5. padaryti validacija validaija ivesties laukui title back end su refresh (min 3 raides)
+6. padaryti sort mygtuka isrikuioti duomenis su refresh naudojant query params (?sort=asc) pagal title/author/timestamp
