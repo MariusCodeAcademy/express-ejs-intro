@@ -23,10 +23,6 @@ const staticPath = path.join(__dirname, 'assets');
 // console.log('staticPath', staticPath);
 app.use(express.static(staticPath));
 
-app.get('/', (req, res) => {
-  res.render('index', { title: 'Home page', currentPage: 'home' });
-});
-
 app.get('/about', (req, res) => {
   // got to db, fetch data
   const points = ['Html', 'Css', 'Js'];
@@ -53,8 +49,10 @@ app.get('/layout', (req, res) => {
 });
 
 const booksRoutes = require('./routes/v1/booksRoutes');
+const pagesRoutes = require('./routes/v1/pagesRoutes');
 
 app.use('/books', booksRoutes);
+app.use('/', pagesRoutes);
 
 // 404 not found url
 app.all('*', (req, res) => {
