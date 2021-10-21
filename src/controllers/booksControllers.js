@@ -1,6 +1,6 @@
-// booksIndex, booksGetNew, booksPostNew
+// booksIndex, booksShowForm, booksPostNew
 
-const { getAllBooks } = require('../models/booksModels');
+const { getAllBooks, getBookCategories } = require('../models/booksModels');
 
 const booksIndex = async (req, res) => {
   const feedback = { msg: '', error: '' };
@@ -15,12 +15,35 @@ const booksIndex = async (req, res) => {
   const data = {
     title: 'Our books',
     currentPage: 'books',
-    books,
+    books: books || [],
     feedback,
   };
   res.render('books/index', data);
 };
 
+const booksShowForm = async (req, res) => {
+  const feedback = { msg: '', error: '' };
+  // get categories for select
+  const categories = await getBookCategories();
+
+  if (categories === false) {
+    feedback.error = 'error getting categories';
+  }
+
+  // console.log('categories', categories);
+  const data = {
+    title: 'Create book',
+    currentPage: 'booksNew',
+    categories: categories,
+    feedback,
+  };
+
+  res.render('books/new', data);
+};
+
+const booksNewBook = '';
+
 module.exports = {
   booksIndex,
+  booksShowForm,
 };

@@ -28,6 +28,16 @@ const getAllBooks = async () => {
   return await dbAction(sql);
 };
 
+const getBookCategories = async () => {
+  // get categories for select
+  const sql = 'SELECT * from book_categories';
+  const categories = await dbAction(sql);
+  return categories;
+};
+
+const addNewBook = async (newBookData) => {};
+
 module.exports = {
   getAllBooks,
+  getBookCategories,
 };
