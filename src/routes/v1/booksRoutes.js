@@ -11,26 +11,6 @@ router.get('/', booksController.booksIndex);
 router.get('/new', booksController.booksShowForm);
 
 // POST /books/new - process the form
-router.post('/new', async (req, res) => {
-  const feedback = { msg: '', error: '' };
-  // create new book
-  const sql = `
-  INSERT INTO books (title, author, year, category, image) 
-  VALUES (?, ?, ?, ?, 'place.jpg')`;
-  const dbResult = await dbAction(sql, Object.values(req.body));
-  if (dbResult === false) {
-    feedback.error = 'something went wrong';
-  } else {
-    feedback.msg = 'book created';
-  }
-  // resrs.send({ msg: 'book created', dbResult });
-
-  const data = {
-    title: 'Create book',
-    currentPage: 'booksNew',
-    feedback: feedback,
-  };
-  res.render('books/new', data);
-});
+router.post('/new', booksController.booksNewBook);
 
 module.exports = router;

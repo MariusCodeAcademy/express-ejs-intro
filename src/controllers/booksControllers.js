@@ -1,6 +1,10 @@
 // booksIndex, booksShowForm, booksPostNew
 
-const { getAllBooks, getBookCategories } = require('../models/booksModels');
+const {
+  getAllBooks,
+  getBookCategories,
+  addNewBook,
+} = require('../models/booksModels');
 
 const booksIndex = async (req, res) => {
   const feedback = { msg: '', error: '' };
@@ -41,9 +45,27 @@ const booksShowForm = async (req, res) => {
   res.render('books/new', data);
 };
 
-const booksNewBook = '';
+const booksNewBook = async (req, res) => {
+  const feedback = { msg: '', error: '' };
+  // create new book
+  const dbResult = await addNewBook(req.body);
+  if (dbResult === false) {
+    feedback.error = 'error adding book';
+  } else {
+    feedback.msg = 'book created';
+  }
+  // resrs.send({ msg: 'book created', dbResult });
+
+  const data = {
+    title: 'Create book',
+    currentPage: 'booksNew',
+    feedback: feedback,
+  };
+  res.render('books/new', data);
+};
 
 module.exports = {
   booksIndex,
   booksShowForm,
+  booksNewBook,
 };

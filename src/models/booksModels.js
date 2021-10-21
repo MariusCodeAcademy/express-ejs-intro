@@ -35,9 +35,16 @@ const getBookCategories = async () => {
   return categories;
 };
 
-const addNewBook = async (newBookData) => {};
+const addNewBook = async (newBookData) => {
+  const sql = `
+  INSERT INTO books (title, author, year, category, image) 
+  VALUES (?, ?, ?, ?, 'place.jpg')`;
+  const dbResult = await dbAction(sql, Object.values(newBookData));
+  return dbResult;
+};
 
 module.exports = {
   getAllBooks,
   getBookCategories,
+  addNewBook,
 };

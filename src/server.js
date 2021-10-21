@@ -42,7 +42,7 @@ app.get('/about', (req, res) => {
   });
 });
 
-const users = require('./db/users');
+// const users = require('./db/users');
 // console.log('users', users);
 app.get('/contact', (req, res) => {
   res.render('contact', { title: 'Contact us today', users });
